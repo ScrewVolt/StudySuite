@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudySuite Dashboard</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <h2 class="logo"><a href="#dashboard">📘 StudySuite</a></h2>
+      <nav>
+        <ul>
+          <li><a href="#homework" id="nav-homework">📋 Homework</a></li>
+          <li><a href="#pomodoro" id="nav-pomodoro">⏱️ Pomodoro</a></li>
+          <li><a href="#gpa" id="nav-gpa">📊 GPA</a></li>
+          <li><a href="#ai" id="nav-ai">🤖 Study AI</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1 id="toolTitle">📘 StudySuite</h1>
+        <div class="user-controls">
+          <span id="userEmail"></span>
+        </div>
+      </header>
+
+      <section id="tool-container">
+        <!-- Tools like Homework, Pomodoro, GPA, AI, Settings will load here -->
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/js/dashboard.js"></script>
+</body>
+<script>
+  const theme = localStorage.getItem('theme') || 'auto';
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (theme === 'dark' || (theme === 'auto' && prefersDark)) {
+    document.body.classList.add('dark-mode');
+  }
+</script>
+</html>

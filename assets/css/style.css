@@ -1,0 +1,330 @@
+
+/* ===== Base Styling ===== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f6f9;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* ===== Layout ===== */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #1e2a38;
+  color: #fff;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.logo a {
+  color: #fff;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  display: block;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+  background: #2e3e50;
+  color: #fff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  background: var(--main-bg, #f4f6f9);
+}
+
+/* ===== Buttons & Controls ===== */
+.user-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #0077ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background-color: #005fd1;
+}
+
+/* ===== Widgets & Tasks ===== */
+.dashboard-widgets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.widget {
+  flex: 1;
+  min-width: 280px;
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease;
+}
+
+.widget:hover {
+  transform: translateY(-3px);
+}
+
+.task {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  cursor: grab;
+  border-left: 6px solid #0077ff;
+}
+
+.task:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.task-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.task-actions button {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0077ff;
+}
+
+/* ===== Widgets for Stats ===== */
+.task-widgets {
+  margin: 2rem 0 1.5rem;
+  font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.task-widgets span {
+  background-color: #f0f4ff;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* ===== Task Labels ===== */
+.subject-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: white;
+  font-weight: bold;
+  background-color: #666;
+}
+
+.priority-badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0077ff;
+}
+
+/* ===== Forms ===== */
+form#task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+form#task-form input,
+form#task-form select,
+form#task-form button {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+form#task-form input:focus,
+form#task-form select:focus {
+  border-color: #0077ff;
+  box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.2);
+}
+
+/* ===== Search Bar ===== */
+.search-bar {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* ===== Modal & Settings ===== */
+.settings {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.setting-group {
+  margin-bottom: 1.5rem;
+}
+
+.setting-group label {
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.setting-group select,
+.setting-group input[type="checkbox"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .dashboard-widgets {
+    flex-direction: column;
+  }
+
+  .task-widgets {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form#task-form {
+    flex-direction: column;
+  }
+}
+
+/* ===== Enhanced Dark Mode ===== */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .sidebar {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode .main-content {
+  background-color: #181818;
+}
+
+body.dark-mode .widget,
+body.dark-mode .task,
+body.dark-mode .modal-content,
+body.dark-mode .settings,
+body.dark-mode .search-bar input,
+body.dark-mode form#task-form input,
+body.dark-mode form#task-form select,
+body.dark-mode form#task-form button {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .task-widgets span {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+body.dark-mode .task-actions button {
+  color: #90caf9;
+}
+
+body.dark-mode .priority-badge {
+  color: #fff;
+  opacity: 0.9;
+}
+
+body.dark-mode button {
+  background-color: #0077ff;
+  color: white;
+}
+
+body.dark-mode button:hover {
+  background-color: #005fd1;
+}
+
+body.dark-mode .subject-badge {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Light Mode Overdue */
+.task.overdue {
+  border-left-color: #e74c3c;
+  background-color: #fff0f0;
+}
+
+/* Dark Mode Overdue */
+body.dark-mode .task.overdue {
+  background-color: #2a1c1c;
+  border-left-color: #e74c3c;
+}

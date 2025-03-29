@@ -1,0 +1,14 @@
+{
+  "name": "studysuite-v2",
+  "version": "1.0.0",
+  "description": "Productivity Suite V2 - Student Dashboard with Firebase + Vite",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
