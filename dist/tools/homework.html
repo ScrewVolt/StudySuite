@@ -1,0 +1,54 @@
+<section>
+  <form id="task-form">
+    <input type="text" id="title" placeholder="Title" required />
+    <input type="text" id="subject" placeholder="Subject" required />
+    <input type="date" id="due" required />
+    <button type="submit">Add Task</button>
+    <select id="priority" required>
+      <option value="high">⭐ High</option>
+      <option value="medium" selected>➡️ Medium</option>
+      <option value="low">💤 Low</option>
+    </select>    
+  </form>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search tasks..." />
+  </div>
+  <div class="task-widgets">
+    <span>📌 Due Today: <strong id="dueTodayCount">0</strong></span>
+    <span>📆 Upcoming (7d): <strong id="upcomingCount">0</strong></span>
+  </div>  
+  <div class="dashboard-widgets">
+    <div class="widget" id="todo-col" data-status="todo">
+      <h3>To Do</h3>
+      <div class="task-list" id="todo"></div>
+    </div>
+    <div class="widget" id="progress-col" data-status="in-progress">
+      <h3>In Progress</h3>
+      <div class="task-list" id="in-progress"></div>
+    </div>
+    <div class="widget" id="done-col" data-status="done">
+      <h3>Done</h3>
+      <div class="task-list" id="done"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Edit Modal (if not already included) -->
+<div id="edit-modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Edit Task</h3>
+    <form id="edit-form">
+      <input type="text" id="edit-title" required />
+      <input type="text" id="edit-subject" required />
+      <input type="date" id="edit-due" required />
+      <button type="submit">Save</button>
+      <button type="button" id="cancel-edit">Cancel</button>
+      <select id="edit-priority" required>
+        <option value="high">⭐ High</option>
+        <option value="medium">➡️ Medium</option>
+        <option value="low">💤 Low</option>
+      </select>      
+    </form>
+  </div>
+</div>
