@@ -5,39 +5,51 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
-const loginModal = document.getElementById('login-modal');
-const signupModal = document.getElementById('signup-modal');
+// Only run login/signup logic if we’re on the login page
+if (window.location.pathname.endsWith("/index.html")) {
+  const loginModal = document.getElementById('login-modal');
+  const signupModal = document.getElementById('signup-modal');
 
-document.getElementById('show-signup')?.addEventListener('click', () => {
-  loginModal.classList.add('hidden');
-  signupModal.classList.remove('hidden');
-});
+  document.getElementById('show-signup')?.addEventListener('click', () => {
+    loginModal.classList.add('hidden');
+    signupModal.classList.remove('hidden');
+  });
 
-document.getElementById('show-login')?.addEventListener('click', () => {
-  signupModal.classList.add('hidden');
-  loginModal.classList.remove('hidden');
-});
+  document.getElementById('show-login')?.addEventListener('click', () => {
+    signupModal.classList.add('hidden');
+    loginModal.classList.remove('hidden');
+  });
 
-document.getElementById('signup-form')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = document.getElementById('signup-email').value;
-  const password = document.getElementById('signup-password').value;
-  await createUserWithEmailAndPassword(auth, email, password);
-  signupModal.classList.add('hidden');
-  window.location.href = '/main.html';
-});
+  document.getElementById('signup-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      window.location.href = '/main.html';
+    } catch (error) {
+      alert("Signup failed: " + error.message);
+    }
+  });
 
-document.getElementById('login-form')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = document.getElementById('login-email').value;
-  const password = document.getElementById('login-password').value;
-  await signInWithEmailAndPassword(auth, email, password);
-  loginModal.classList.add('hidden');
-  window.location.href = '/main.html';
-});
+  document.getElementById('login-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.href = '/main.html';
+    } catch (error) {
+      alert("Login failed: " + error.message);
+    }
+  });
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    window.location.href = '/main.html';
-  }
-});
+  // Auto-redirect if already logged in
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      window.location.href = '/main.html';
+    }
+  });
+}
+
+// Elsewhere (e.g., main.html), YOU handle the "protect page" logic separately
